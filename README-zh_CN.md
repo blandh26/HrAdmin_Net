@@ -12,7 +12,7 @@
 ## 🍟 概述
 
 - 本项目适合有一定 NetCore 和 vue 基础的开发人员
-- 基于.NET5/.NET7/.NET8 实现的通用权限管理平台（RBAC 模式）。整合最新技术高效快速开发，前后端分离模式，开箱即用。
+- 基于.NET8 实现的通用权限管理平台（RBAC 模式）。整合最新技术高效快速开发，前后端分离模式，开箱即用。
 - 代码量少、学习简单、通俗易懂、功能强大、易扩展、轻量级，让 web 开发更快速、简单高效（从此告别 996），解决 70%的重复工作，专注您的业务，轻松开发从现在开始！
 
 ```
@@ -72,7 +72,7 @@ Vue 版前端技术栈 ：基于 vue2.x/vue3.x/uniapp、vuex、vue-router 、vue
 
 ## 🍻 项目结构
 
-![alt](https://gitee.com/izory/ZrAdminNetCore/raw/master/document/images/kj.png)
+![alt](https://github.com/blandh26/HrAdmin_Net/blob/main/images1.png)
 
 ```
 ├─ZR.Service                ->[你的业务服务层类库]：提供自己业务数据Api接口调用；
