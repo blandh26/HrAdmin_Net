@@ -23,7 +23,7 @@
 ---
 
 <div align="center">
-	<p><strong><a href="README.md">简体中文</a> | <a href="README.en.md">English</a></strong></p>
+	<p><strong><a href="README-zh_CN.md">简体中文</a> | <a href="README.en.md">한국어</a></strong></p>
 </div>
 
 ---
