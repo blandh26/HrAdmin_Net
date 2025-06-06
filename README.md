@@ -73,15 +73,15 @@ Vue 버전 프론트엔드 기술 스택: vue2.x/vue3.x/uniapp, vuex, vue-router
 ## 🍻 프로젝트 구조
 
 ```
-├─ZR.Service                ->[你的业务服务层类库]：提供自己业务数据Api接口调用；
-├─ZR.ServiceCore            ->[系统服务层类库]：提供系统Api接口；
-├─ZR.Repository             ->[仓库层类库]：方便提供有执行存储过程的操作；
-├─ZR.Model                	->[实体层类库]：自己业务库表、数据传输对象；
-├─ZR.Admin.WebApi           ->[webapi接口]：为Vue版或其他三方系统提供接口服务。
-├─ZR.Tasks               		->[定时任务类库]：提供项目定时任务实现功能；
-├─ZR.CodeGenerator          ->[代码生成功能]：包含代码生成的模板、方法、代码生成的下载。
-├─ZR.Vue               			->[前端UI]：vue2.0版本UI层(已经不再更新推荐使用vue3)。
-├─document               		->[文档]：数据库脚本(弃用)
+├─ZR.Service ->      [비즈니스 서비스 계층]: 비즈니스 데이터 API 호출
+├─ZR.ServiceCore ->  [시스템 서비스 계층]: 시스템 API 제공
+├─ZR.Repository ->   [저장소 계층]: 저장 프로시저 작업 지원
+├─ZR.Model ->        [엔티티 계층]: 비즈니스 테이블, DTO 객체
+├─ZR.Admin.WebApi -> [WebAPI 인터페이스]: Vue/기타 시스템에 인터페이스 제공
+├─ZR.Tasks ->        [스케줄 작업]: 프로젝트 작업 스케줄링 기능
+├─ZR.CodeGenerator ->[코드 생성]: 코드 생성 템플릿/메서드/다운로드
+├─ZR.Vue ->          [프론트엔드 UI]: vue2.0 버전(더 이상 업데이트 안됨, vue3 권장)
+├─document ->        [문서]: DB 스크립트(사용 중지)
 ```
 
 ## 🎉 장점
