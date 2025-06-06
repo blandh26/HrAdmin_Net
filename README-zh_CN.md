@@ -96,7 +96,7 @@ Vue 版前端技术栈 ：基于 vue2.x/vue3.x/uniapp、vuex、vue-router 、vue
 6. 依赖少(只需数据库即可使用)，上手容易
 7. 
 ## 💐 特别鸣谢
-- 👉本项目基于开源项目 ​[ZRAdmin-vue](https://gitee.com/izory/ZrAdminNetCore) 进行二次开发。
+- 👉本项目基于开源项目 ​[ZrAdminNetCore](https://gitee.com/izory/ZrAdminNetCore) 进行二次开发。
 
 ## 💐 授权许可协议条款
 - HrAdmin_Net 采用 MIT 开源协议协议。
