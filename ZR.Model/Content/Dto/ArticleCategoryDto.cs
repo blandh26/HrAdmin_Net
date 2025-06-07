@@ -35,6 +35,14 @@ namespace ZR.Model.Content.Dto
         /// 栏目属性json
         /// </summary>
         public string AttributeJson { get; set; }
+        /// <summary>
+        /// 栏目模板路径
+        /// </summary>
+        public string TemplatePath { get; set; }
+        /// <summary>
+        /// 栏目属性值表名
+        /// </summary>
+        public string AttributeTable { get; set; }
     }
 
     /// <summary>

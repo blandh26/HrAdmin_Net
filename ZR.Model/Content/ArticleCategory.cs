@@ -59,5 +59,15 @@
         /// </summary>
         [SugarColumn(ColumnDescription = "栏目属性json", ColumnDataType = StaticConfig.CodeFirst_BigString)]
         public string AttributeJson { get; set; }
+        /// <summary>
+        /// 栏目模板路径
+        /// </summary>
+        [SugarColumn(ColumnDescription = "栏目模板路径", ExtendedAttribute = ProteryConstant.NOTNULL)]
+        public string TemplatePath { get; set; }
+        /// <summary>
+        /// 栏目属性值表
+        /// </summary>
+        [SugarColumn(ColumnDescription = "栏目属性值表", ExtendedAttribute = ProteryConstant.NOTNULL)]
+        public string AttributeTable { get; set; }
     }
 }
