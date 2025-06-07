@@ -53,5 +53,11 @@
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         [SugarColumn(IsIgnore = true)]
         public List<ArticleCategory> Children { get; set; }
+
+        /// <summary>
+        /// 栏目属性json
+        /// </summary>
+        [SugarColumn(ColumnDescription = "栏目属性json", ColumnDataType = StaticConfig.CodeFirst_BigString)]
+        public string AttributeJson { get; set; }
     }
 }

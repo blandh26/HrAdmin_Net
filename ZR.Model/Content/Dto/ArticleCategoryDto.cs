@@ -31,6 +31,10 @@ namespace ZR.Model.Content.Dto
         /// </summary>
         public int JoinNum { get; set; }
         public List<ArticleCategory> Children { get; set; }
+        /// <summary>
+        /// 栏目属性json
+        /// </summary>
+        public string AttributeJson { get; set; }
     }
 
     /// <summary>
