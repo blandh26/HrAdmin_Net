@@ -15,12 +15,9 @@ namespace Infrastructure
             var url = AppSettings.GetConfig("urls");
             Console.WriteLine(content);
             Console.ForegroundColor = ConsoleColor.Blue;
-            //Console.WriteLine("🎉源码地址: https://gitee.com/izory/ZrAdminNetCore");
-            Console.WriteLine("📖官方文档：http://www.izhaorui.cn");
-            Console.WriteLine("💰打赏作者：http://www.izhaorui.cn/vip");
-            Console.WriteLine("📱移动端体验：http://demo.izhaorui.cn/h5");
-            Console.WriteLine($"Swagger地址：{url}/swagger/index.html");
-            Console.WriteLine($"初始化种子数据地址：{url}/common/InitSeedData");
+            Console.WriteLine("github: https://github.com/blandh26/HrAdmin_Net");
+            Console.WriteLine($"Swagger：{url}/swagger/index.html");
+            Console.WriteLine($"InitSeedData：{url}/common/InitSeedData");
         }
     }
 }
