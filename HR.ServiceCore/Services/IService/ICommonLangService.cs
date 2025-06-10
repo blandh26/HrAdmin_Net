@@ -7,7 +7,7 @@ namespace HR.ServiceCore.Services
     /// <summary>
     /// 多语言配置service接口
     ///
-    /// @author zr
+    /// @author blandh
     /// @date 2022-05-06
     /// </summary>
     public interface ICommonLangService : IBaseService<CommonLang>

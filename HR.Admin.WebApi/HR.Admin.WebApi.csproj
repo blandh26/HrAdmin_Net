@@ -10,12 +10,6 @@
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<NoWarn>1701;1702;1591,8603,8602,8604,8600,8618</NoWarn>
 	</PropertyGroup>
-
-	<ItemGroup>
-		<ProjectReference Include="..\ZR.CodeGenerator\HR.CodeGenerator.csproj" />
-		<ProjectReference Include="..\ZR.Service\HR.Service.csproj" />
-		<ProjectReference Include="..\ZR.Tasks\HR.Tasks.csproj" />
-	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Lazy.Captcha.Core" Version="2.0.9" />
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
@@ -26,7 +20,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Folder Include="Controllers\FrontEnd\" />
 		<Folder Include="Properties\PublishProfiles\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\HR.CodeGenerator\HR.CodeGenerator.csproj" />
+	  <ProjectReference Include="..\HR.Service\HR.Service.csproj" />
+	  <ProjectReference Include="..\HR.Tasks\HR.Tasks.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

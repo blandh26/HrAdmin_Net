@@ -54,7 +54,7 @@ namespace HR.Admin.WebApi.Extensions
                     Title = "HrAdmin.NET Api",
                     Version = "v1",
                     Description = "系统管理",
-                    Contact = new OpenApiContact { Name = "ZRAdmin doc", Url = new Uri("https://www.izhaorui.cn/doc") }
+                    Contact = new OpenApiContact { Name = "HRAdmin doc", Url = new Uri("https://www.izhaorui.cn/doc") }
                 });
                 c.SwaggerDoc("article", new OpenApiInfo
                 {

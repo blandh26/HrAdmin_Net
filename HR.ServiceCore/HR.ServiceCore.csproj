@@ -8,14 +8,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\ZR.Common\HR.Common.csproj" />
-		<ProjectReference Include="..\ZR.Repository\HR.Repository.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="NETCore.Encrypt" Version="2.1.1" />
 		<PackageReference Include="NLog" Version="5.4.0" />
 		<PackageReference Include="SixLabors.ImageSharp" Version="3.1.7" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\HR.Common\HR.Common.csproj" />
+	  <ProjectReference Include="..\HR.Repository\HR.Repository.csproj" />
 	</ItemGroup>
 
 </Project>

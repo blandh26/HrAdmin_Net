@@ -9,7 +9,7 @@ namespace HR.ServiceCore.Services
     /// <summary>
     /// 多语言配置Service业务层处理
     ///
-    /// @author zr
+    /// @author blandh
     /// @date 2022-05-06
     /// </summary>
     [AppService(ServiceType = typeof(ICommonLangService), ServiceLifetime = LifeTime.Transient)]

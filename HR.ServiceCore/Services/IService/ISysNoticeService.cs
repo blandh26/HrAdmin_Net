@@ -7,7 +7,7 @@ namespace HR.ServiceCore.Services
     /// <summary>
     /// 通知公告表service接口
     ///
-    /// @author zr
+    /// @author blandh
     /// @date 2021-12-15
     /// </summary>
     public interface ISysNoticeService : IBaseService<SysNotice>

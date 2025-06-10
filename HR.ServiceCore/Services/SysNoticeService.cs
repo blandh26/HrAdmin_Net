@@ -9,7 +9,7 @@ namespace HR.ServiceCore.Services
     /// <summary>
     /// 通知公告表Service业务层处理
     ///
-    /// @author zr
+    /// @author blandh
     /// @date 2021-12-15
     /// </summary>
     [AppService(ServiceType = typeof(ISysNoticeService), ServiceLifetime = LifeTime.Transient)]

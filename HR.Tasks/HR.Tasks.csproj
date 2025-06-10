@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ZR.Model\HR.Model.csproj" />
-    <ProjectReference Include="..\ZR.Service\HR.Service.csproj" />
+    <ProjectReference Include="..\HR.Model\HR.Model.csproj" />
+    <ProjectReference Include="..\HR.Service\HR.Service.csproj" />
   </ItemGroup>
 
 </Project>

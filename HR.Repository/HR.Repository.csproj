@@ -5,8 +5,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\HR.Model\HR.Model.csproj" />
 		<ProjectReference Include="..\Infrastructure\HR.Infrastructure.csproj" />
-		<ProjectReference Include="..\ZR.Model\HR.Model.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

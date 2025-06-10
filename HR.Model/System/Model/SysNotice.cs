@@ -3,7 +3,7 @@ namespace HR.Model.System
     /// <summary>
     /// 通知公告表
     ///
-    /// @author zr
+    /// @author blandh
     /// @date 2021-12-15
     /// </summary>
     [SugarTable("sys_notice", "通知公告表")]
