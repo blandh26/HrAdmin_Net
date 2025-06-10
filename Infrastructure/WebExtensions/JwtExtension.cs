@@ -6,7 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Threading.Tasks;
 
-namespace ZR.Infrastructure.WebExtensions
+namespace HR.Infrastructure.WebExtensions
 {
     public static class JwtExtension
     {

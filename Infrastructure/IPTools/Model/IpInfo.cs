@@ -1,4 +1,4 @@
-﻿namespace ZR.Infrastructure.IPTools.Model
+﻿namespace HR.Infrastructure.IPTools.Model
 {
     public class IpInfo
     {

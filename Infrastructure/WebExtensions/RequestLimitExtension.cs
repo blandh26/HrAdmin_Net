@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ZR.Infrastructure.WebExtensions
+namespace HR.Infrastructure.WebExtensions
 {
     public static class RequestLimitExtension
     {

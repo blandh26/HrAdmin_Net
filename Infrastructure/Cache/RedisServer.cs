@@ -1,7 +1,7 @@
 ﻿using CSRedis;
 using Infrastructure;
 
-namespace ZR.Common.Cache
+namespace HR.Common.Cache
 {
     public class RedisServer
     {

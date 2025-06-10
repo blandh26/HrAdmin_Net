@@ -1,9 +1,9 @@
 ﻿using IP2Region.Net.XDB;
 using System;
 using System.IO;
-using ZR.Infrastructure.IPTools.Model;
+using HR.Infrastructure.IPTools.Model;
 
-namespace ZR.Infrastructure.IPTools
+namespace HR.Infrastructure.IPTools
 {
     public class IpTool
     {

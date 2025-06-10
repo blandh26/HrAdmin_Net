@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Reflection;
 
 //不改命名空间，要修改很多地方
-namespace ZR.Common
+namespace HR.Common
 {
     public class CacheHelper
     {

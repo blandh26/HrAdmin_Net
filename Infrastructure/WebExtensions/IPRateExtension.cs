@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace ZR.Infrastructure.WebExtensions
+namespace HR.Infrastructure.WebExtensions
 {
     public static class IPRateExtension
     {

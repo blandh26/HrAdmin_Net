@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace ZR.Infrastructure.Helper
+namespace HR.Infrastructure.Helper
 {
     public class RandomHelper
     {
