@@ -3,6 +3,7 @@ using HR.Model.FrontEnd.Dto;
 using HR.Service.FrontEnd.IService;
 using Infrastructure.Attribute;
 using HR.Repository;
+using Infrastructure.Extensions;
 
 namespace HR.Service.FrontEnd
 {
@@ -62,6 +63,18 @@ namespace HR.Service.FrontEnd
         {
             var predicate = Expressionable.Create<Pointslog>();
 
+            predicate = predicate.AndIF(parm.Id != null, it => it.Id == parm.Id);
+            predicate = predicate.AndIF(!string.IsNullOrEmpty(parm.Module), it => it.Module == parm.Module);
+            predicate = predicate.AndIF(parm.ActionType != null, it => it.ActionType == parm.ActionType);
+            predicate = predicate.AndIF(parm.ScoreType != null, it => it.ScoreType == parm.ScoreType);
+            if (parm.UserId != null)
+            {
+                predicate = predicate.AndIF(parm.UserId != null, it => it.UserId == Convert.ToInt64(parm.UserId));
+            }
+            predicate = predicate.AndIF(!string.IsNullOrEmpty(parm.Operator), it => it.Operator == parm.Operator);
+            predicate = predicate.AndIF(parm.BeginCreateTime == null, it => it.CreateTime >= DateTime.Now.ToShortDateString().ParseToDateTime());
+            predicate = predicate.AndIF(parm.BeginCreateTime != null, it => it.CreateTime >= parm.BeginCreateTime);
+            predicate = predicate.AndIF(parm.EndCreateTime != null, it => it.CreateTime <= parm.EndCreateTime);
             return predicate;
         }
     }

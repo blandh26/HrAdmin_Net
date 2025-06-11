@@ -8,6 +8,7 @@ namespace HR.Admin.WebApi.Controllers.FrontEnd
     /// 积分记录表
     /// </summary>
     [Route("frontEnd/FPointslog")]
+    [ApiExplorerSettings(GroupName = "frontEnd")]
     public class PointslogController : BaseController
     {
         /// <summary>
@@ -18,6 +19,20 @@ namespace HR.Admin.WebApi.Controllers.FrontEnd
         public PointslogController(IPointslogService PointslogService)
         {
             _PointslogService = PointslogService;
+        }
+
+        /// <summary>
+        /// 查询积分记录表列表(用户用)
+        /// </summary>
+        /// <param name="parm"></param>
+        /// <returns></returns>
+        [HttpGet("listByUserId")]
+        public IActionResult QueryPointslogByUserId(long userid)
+        {
+            PointslogQueryDto parm = new PointslogQueryDto();
+            parm.UserId = userid;
+            var response = _PointslogService.GetList(parm);
+            return SUCCESS(response);
         }
 
         /// <summary>
