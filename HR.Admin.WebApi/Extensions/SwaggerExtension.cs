@@ -37,6 +37,7 @@ namespace HR.Admin.WebApi.Extensions
             {
                 c.SwaggerEndpoint("sys/swagger.json", "系统管理");
                 c.SwaggerEndpoint("article/swagger.json", "文章管理");
+                c.SwaggerEndpoint("frontEnd/swagger.json", "前台管理");
                 c.SwaggerEndpoint("v1/swagger.json", "business");
                 c.DocExpansion(DocExpansion.None); //->修改界面打开时自动折叠
             });
@@ -54,14 +55,21 @@ namespace HR.Admin.WebApi.Extensions
                     Title = "HrAdmin.NET Api",
                     Version = "v1",
                     Description = "系统管理",
-                    Contact = new OpenApiContact { Name = "HRAdmin doc", Url = new Uri("https://www.izhaorui.cn/doc") }
+                    Contact = new OpenApiContact { Name = "HRAdmin doc"/*, Url = new Uri("https://www.izhaorui.cn/doc")*/ }
                 });
                 c.SwaggerDoc("article", new OpenApiInfo
                 {
                     Title = "HrAdmin.NET Api",
                     Version = "v1",
                     Description = "文章管理",
-                    Contact = new OpenApiContact { Name = "HRAdmin doc", Url = new Uri("https://www.izhaorui.cn/doc") }
+                    Contact = new OpenApiContact { Name = "HRAdmin doc"/*, Url = new Uri("https://www.izhaorui.cn/doc")*/ }
+                });
+                c.SwaggerDoc("frontEnd", new OpenApiInfo
+                {
+                    Title = "HrAdmin.NET Api",
+                    Version = "v1",
+                    Description = "前台管理",
+                    Contact = new OpenApiContact { Name = "HRAdmin doc"/*, Url = new Uri("https://www.izhaorui.cn/doc")*/ }
                 });
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {

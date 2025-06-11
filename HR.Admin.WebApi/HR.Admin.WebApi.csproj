@@ -20,7 +20,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Controllers\FrontEnd\" />
 		<Folder Include="Properties\PublishProfiles\" />
 	</ItemGroup>
 
