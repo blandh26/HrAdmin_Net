@@ -42,19 +42,19 @@ namespace HR.Admin.WebApi.Controllers
             _localizer = stringLocalizer;
         }
 
-        /// <summary>
-        /// home
-        /// </summary>
-        /// <returns></returns>
-        [Route("/")]
-        [HttpGet]
-        [AllowAnonymous]
-        public IActionResult Index()
-        {
-            var hello = _localizer["hello"].Value;
-            return Ok($"{hello}看到这里页面说明你已经成功启动了本项目:)\n\n" +
-                "如果觉得项目有用，打赏作者喝杯咖啡作为奖励\n☛☛http://www.izhaorui.cn/vip\n");
-        }
+        ///// <summary>
+        ///// home
+        ///// </summary>
+        ///// <returns></returns>
+        //[Route("/")]
+        //[HttpGet]
+        //[AllowAnonymous]
+        //public IActionResult Index()
+        //{
+        //    var hello = _localizer["hello"].Value;
+        //    return Ok($"{hello}看到这里页面说明你已经成功启动了本项目:)\n\n" +
+        //        "如果觉得项目有用，打赏作者喝杯咖啡作为奖励\n☛☛http://www.izhaorui.cn/vip\n");
+        //}
 
         /// <summary>
         /// 查询IP信息

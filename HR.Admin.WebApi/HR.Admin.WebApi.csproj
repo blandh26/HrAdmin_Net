@@ -11,6 +11,13 @@
 		<NoWarn>1701;1702;1591,8603,8602,8604,8600,8618</NoWarn>
 	</PropertyGroup>
 	<ItemGroup>
+	  <Content Include="Template\login.html">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Template\register.html" />
+	  <Content Include="Template\resetpsd.html" />
+	</ItemGroup>
+	<ItemGroup>
 		<PackageReference Include="Lazy.Captcha.Core" Version="2.0.9" />
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
@@ -21,6 +28,8 @@
 
 	<ItemGroup>
 		<Folder Include="Properties\PublishProfiles\" />
+		<Folder Include="Template\" />
+		<Folder Include="wwwroot\Html\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -33,11 +42,47 @@
 		<None Update="ip2region.xdb">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
+		<None Update="Template\index.html">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
 		<Content Update="wwwroot\Generatecode\**\*">
 			<CopyToPublishDirectory>Never</CopyToPublishDirectory>
 		</Content>
 		<Content Update="wwwroot\export\**\*">
 			<CopyToPublishDirectory>Never</CopyToPublishDirectory>
 		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Update="wwwroot\static\css\app.css">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Content Update="wwwroot\static\font\font_29668_bri3o57i6uw.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Content Update="wwwroot\static\font\font_29668_bri3o57i6uw.woff">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Content Update="wwwroot\static\font\font_29668_bri3o57i6uw.woff2">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Content Update="wwwroot\static\image\sign-bg.jpg">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Content Update="wwwroot\static\js\loader.js">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Content Update="wwwroot\static\picture\qq.webp">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Content Update="wwwroot\static\picture\qr-tb.jpg">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Content Update="wwwroot\static\picture\tb-kefu.jpg">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Content Update="wwwroot\static\picture\wanganbei.png">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
 	</ItemGroup>
 </Project>

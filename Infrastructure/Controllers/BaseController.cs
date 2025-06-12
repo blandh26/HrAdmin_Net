@@ -20,6 +20,7 @@ namespace Infrastructure.Controllers
     public class BaseController : ControllerBase
     {
         public static string TIME_FORMAT_FULL = "yyyy-MM-dd HH:mm:ss";
+        public static string TemplatePath = Path.Combine(Directory.GetCurrentDirectory(), "Template");
 
         /// <summary>
         /// 返回成功封装
@@ -233,6 +234,13 @@ namespace Infrastructure.Controllers
             string fullPath = Path.Combine(webHostEnvironment.WebRootPath, "ImportTemplate", sFileName);
 
             return (sFileName, fullPath);
+        }
+
+        protected string GetLangFromDomain(string host)
+        {
+            if (host.StartsWith("kr.")) return "kr";
+            if (host.StartsWith("cn.")) return "cn";
+            return "cn";
         }
     }
 }
