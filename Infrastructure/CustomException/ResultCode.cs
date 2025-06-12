@@ -44,6 +44,12 @@ namespace Infrastructure
         FORBIDDEN = 403,
 
         [Description("Bad Request")]
-        BAD_REQUEST = 400
+        BAD_REQUEST = 400,
+
+        [Description("Not Found")]
+        NOT_FOUND = 404,
+
+        [Description("Too Many Requests")]
+        TOO_MANY_REQUESTS = 429
     }
 }

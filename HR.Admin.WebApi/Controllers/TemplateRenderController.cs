@@ -20,6 +20,7 @@ namespace HR.Admin.WebApi.Controllers
         {
             string templatePath = Path.Combine(TemplatePath, "index.html");
             string html = ScribanHelper.RenderTemplate(templatePath, GetLang());
+            int aa = Convert.ToInt32("21ddd");
             return Content(html, "text/html");
         }
 

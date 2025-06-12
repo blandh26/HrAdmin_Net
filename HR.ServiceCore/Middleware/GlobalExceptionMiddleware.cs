@@ -10,6 +10,7 @@ using HR.Infrastructure.IPTools;
 using HR.Model.System;
 using HR.ServiceCore.Services;
 using textJson = System.Text.Json;
+using System.Net;
 
 namespace HR.ServiceCore.Middleware
 {

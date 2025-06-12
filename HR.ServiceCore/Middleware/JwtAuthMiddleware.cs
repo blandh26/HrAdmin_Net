@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System.Security.Claims;
 using HR.Common;
+using System.Net;
 
 namespace HR.ServiceCore.Middleware
 {
@@ -37,11 +38,13 @@ namespace HR.ServiceCore.Middleware
                 await _next(context);
                 return;
             }
+            // 白名单路径放行
             if (_whitelistPaths.Any(p => path.StartsWith(p, StringComparison.OrdinalIgnoreCase)))
             {
                 await _next(context);
                 return;
             }
+            // 允许匿名访问的端点
             var endpoint = context.GetEndpoint();
             var allowAnonymous = endpoint?.Metadata?.GetMetadata<AllowAnonymousAttribute>() != null;
 
@@ -50,29 +53,32 @@ namespace HR.ServiceCore.Middleware
                 await _next(context);
                 return;
             }
-
+            // 获取客户端信息
             string ip = HttpContextExtension.GetClientUserIp(context);
             string url = context.Request.Path;
             string osType = context.Request.Headers["os"];
-            
+            // 核心验证逻辑
             TokenModel loginUser = JwtUtil.GetLoginUser(context);
 
-            if (loginUser != null)
+            if (loginUser != null)// 令牌有效
             {
+                // 令牌刷新机制 (5分钟内过期时)
                 var now = DateTime.UtcNow;
                 var ts = loginUser.ExpireTime - now;
                 var cacheKey = $"token_{loginUser.UserId}";
 
                 if (!CacheHelper.Exists(cacheKey) && ts.TotalMinutes < 5 && ts.TotalMinutes > 0)
                 {
+                    // 生成新令牌
                     var newToken = JwtUtil.GenerateJwtToken(JwtUtil.AddClaims(loginUser));
+                    // 缓存防重复刷新
                     CacheHelper.SetCache(cacheKey, cacheKey, 1);
-
+                    // 设置响应头
                     if (!string.IsNullOrEmpty(osType))
                     {
                         context.Response.Headers.Append("Access-Control-Expose-Headers", "X-Refresh-Token");
                     }
-
+                    // 身份挂载
                     context.Response.Headers.Append("X-Refresh-Token", newToken);
                     _logger.LogInformation($"刷新Token: {loginUser.UserName}");
                 }
@@ -81,15 +87,55 @@ namespace HR.ServiceCore.Middleware
                 var identity = new ClaimsIdentity(JwtUtil.AddClaims(loginUser), "jwt");
                 context.User = new ClaimsPrincipal(identity);
 
-                await _next(context);
+                await _next(context);// 放行请求
             }
-            else
+            else// 令牌无效
             {
-                string msg = $"请求访问[{url}]失败，Token无效或未登录";
-                _logger.LogWarning(msg);
-                //context.Response.StatusCode = StatusCodes.Status401Unauthorized;
-                await context.Response.WriteAsJsonAsync(ApiResult.Error(ResultCode.DENY, msg));
+                // 1. 后台API请求（以/dev-api开头）
+                if (context.Request.Path.StartsWithSegments("/dev-api"))
+                {
+                    string msg = $"请求访问[{url}]失败，Token无效或未登录";
+                    _logger.LogWarning(msg);
+                    //context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                    await context.Response.WriteAsJsonAsync(ApiResult.Error(ResultCode.DENY, msg));
+                }
+                // 2. 前台页面请求
+                else
+                {
+                    // 首先设置401状态码（基础状态）
+                    context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+
+                    // 获取完整URL（用于登录后重定向）
+                    string returnUrl = GetFullUrl(context);
+                    context.Response.Redirect($"/login?returnUrl={returnUrl}");
+                }
+            }            
+        }
+
+        /// <summary>
+        /// 完整实现 GetFullUrl
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        private string GetFullUrl(HttpContext context)
+        {
+            // 获取原始请求路径
+            var path = context.Request.Path;
+
+            // 获取查询字符串（如果有）
+            var queryString = context.Request.QueryString;
+
+            // 拼接完整URL
+            var fullUrl = path.HasValue ? path.Value : "/";
+
+            // 如果存在查询字符串，则附加
+            if (queryString.HasValue)
+            {
+                fullUrl += queryString.Value;
             }
+
+            // URL编码返回
+            return WebUtility.UrlEncode(fullUrl);
         }
     }
 }

@@ -11,6 +11,9 @@
 		<NoWarn>1701;1702;1591,8603,8602,8604,8600,8618</NoWarn>
 	</PropertyGroup>
 	<ItemGroup>
+	  <None Remove="Template\login - 复制.html" />
+	</ItemGroup>
+	<ItemGroup>
 	  <Content Include="Template\login.html">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Content>
@@ -28,7 +31,6 @@
 
 	<ItemGroup>
 		<Folder Include="Properties\PublishProfiles\" />
-		<Folder Include="Template\" />
 		<Folder Include="wwwroot\Html\" />
 	</ItemGroup>
 
@@ -42,9 +44,6 @@
 		<None Update="ip2region.xdb">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
-		<None Update="Template\index.html">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
 		<Content Update="wwwroot\Generatecode\**\*">
 			<CopyToPublishDirectory>Never</CopyToPublishDirectory>
 		</Content>
@@ -57,7 +56,7 @@
 	  <Content Update="wwwroot\static\css\app.css">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Content>
-	  <Content Update="wwwroot\static\font\font_29668_bri3o57i6uw.ttf">
+	  <Content Update="wwwroot\static\font\font_29668.ttf">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Content>
 	  <Content Update="wwwroot\static\font\font_29668_bri3o57i6uw.woff">
