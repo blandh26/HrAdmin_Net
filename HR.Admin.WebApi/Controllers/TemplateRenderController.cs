@@ -55,6 +55,21 @@ namespace HR.Admin.WebApi.Controllers
             return Content(html, "text/html");
         }
 
+        [HttpGet("error/404")]
+        public IActionResult error404()
+        {
+            string templatePath = Path.Combine(TemplatePath, "404.html");
+            string html = ScribanHelper.RenderTemplate(templatePath, GetLang());
+            return Content(html, "text/html");
+        }
+
+        [HttpGet("error/500")]
+        public IActionResult error500()
+        {
+            string templatePath = Path.Combine(TemplatePath, "500.html");
+            string html = ScribanHelper.RenderTemplate(templatePath, GetLang());
+            return Content(html, "text/html");
+        }
         private string GetLang()
         {
             var host = Request.Host.Host;

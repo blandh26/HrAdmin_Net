@@ -112,6 +112,51 @@ namespace HR.ServiceCore.Middleware
             }            
         }
 
+        private bool IsValidEndpoint(Endpoint endpoint)
+        {
+            // 1. 检查是否有实际请求委托
+            if (endpoint.RequestDelegate == null)
+                return false;
+
+            // 2. 检查是否是框架特殊端点
+            if (endpoint.DisplayName?.Contains("Fallback") == true ||
+                endpoint.DisplayName?.Contains("Dummy") == true)
+            {
+                return false;
+            }
+
+            // 3. 检查MVC终点的Controller/Action是否存在
+            var actionDescriptor = endpoint.Metadata.GetMetadata<ControllerActionDescriptor>();
+            if (actionDescriptor != null)
+            {
+                try
+                {
+                    // 获取控制器类型
+                    var controllerType = Type.GetType(actionDescriptor.ControllerTypeInfo.FullName);
+                    if (controllerType == null)
+                        return false;
+
+                    // 检查方法是否存在
+                    var method = controllerType.GetMethod(actionDescriptor.ActionName);
+                    return method != null;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+
+            // 4. 检查Razor Pages
+            var pageDescriptor = endpoint.Metadata.GetMetadata<PageActionDescriptor>();
+            if (pageDescriptor != null)
+            {
+                return File.Exists(pageDescriptor.RelativePath);
+            }
+
+            // 5. 其他类型端点默认为有效
+            return true;
+        }
+
         /// <summary>
         /// 完整实现 GetFullUrl
         /// </summary>
