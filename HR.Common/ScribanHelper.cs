@@ -13,62 +13,115 @@ using Scriban;
 
 namespace HR.Common
 {
-
+    /// <summary>
+    /// Scriban 模板帮助类（支持语言切换、include、自定义函数）
+    /// </summary>
     public static class ScribanHelper
     {
         /// <summary>
-        /// 渲染 Scriban 模板
+        /// 渲染 Scriban 模板（支持自动语言切换、include、自定义函数）
         /// </summary>
-        /// <param name="templateBasePath">模板基础路径，如 Template/login.html（会自动加语言后缀）</param>
-        /// <param name="model">模板数据</param>
-        /// <param name="lang">语言（kr 或 cn），为空时尝试自动识别</param>
-        /// <param name="requestHost">请求域名，用于自动识别语言</param>
-        public static string RenderTemplate(string templateBasePath, object model, string lang = null, string requestHost = null)
+        /// <param name="templateBasePath">模板路径，如 Template/login.html（自动加 _kr 或 _cn）</param>
+        /// <param name="model">模板数据对象</param>
+        /// <param name="lang">语言代码（kr / cn），默认 cn</param>
+        /// <returns>渲染后的 HTML 字符串</returns>
+        public static string RenderTemplate(string templateBasePath, object model, string lang = "cn")
         {
-            // 自动识别语言
-            if (string.IsNullOrEmpty(lang) && !string.IsNullOrEmpty(requestHost))
+            try
             {
-                lang = requestHost.StartsWith("kr.") ? "kr" :
-                       requestHost.StartsWith("cn.") ? "cn" : "cn";
+                string rootPath = Path.Combine(Directory.GetCurrentDirectory(), "Template");
+                var finalPath = Path.Combine(rootPath, templateBasePath);
+
+                if (!File.Exists(finalPath))
+                    throw new FileNotFoundException($"模板文件不存在: {templateBasePath}");
+
+                // 读取模板内容并解析
+                var content = File.ReadAllText(finalPath);
+                var template = Template.Parse(content);
+
+                // 创建上下文，支持 include、自定义函数
+                var context = new TemplateContext();
+
+                // 加载 Template 根目录下的 include 文件
+                context.TemplateLoader = new InternalTemplateLoader(Directory.GetCurrentDirectory());
+
+                // 注入数据对象和自定义函数
+                if (model != null)
+                {
+                    context.PushGlobal(CreateScriptObject(model));
+                }
+
+                return template.Render(context);
             }
-
-            lang ??= "cn"; // 默认中文
-
-            // 根据语言生成模板路径，如：Template/login_kr.html
-            var ext = Path.GetExtension(templateBasePath); // .html
-            var pathWithoutExt = templateBasePath.Substring(0, templateBasePath.Length - ext.Length);
-            var finalPath = $"{pathWithoutExt}_{lang}{ext}";
-
-            if (!File.Exists(finalPath))
+            catch (Exception ex)
             {
-                throw new FileNotFoundException($"模板文件不存在: {finalPath}");
+                throw ex;
             }
-
-            var content = File.ReadAllText(finalPath);
-            var template = Scriban.Template.Parse(content);
-
-            return template.Render(model, member => member.Name);
         }
 
-        public static string RenderTemplate(string templatePath, string lang, object model = null)
+        /// <summary>
+        /// 构建用于 Scriban 渲染的数据对象，包含模型属性 + 自定义函数
+        /// </summary>
+        private static ScriptObject CreateScriptObject(object model)
         {
-            // 替换语言目录
-            if (lang == "kr")
-                templatePath = templatePath.Replace("Template/", "Template/");
-            else
-                templatePath = templatePath.Replace("Template/", "Template/");
+            var script = new ScriptObject();
 
-            if (!File.Exists(templatePath))
-                return $"模板文件不存在: {templatePath}";
+            // 导入模型属性，字段名保持原样
+            script.Import(model, renamer: member => member.Name);
 
-            string content = File.ReadAllText(templatePath);
-            var template = Template.Parse(content);
+            // 自定义常用函数
+            script.Import("now", () => DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
 
-            if (model == null)
-                model = new { };
+            script.Import("truncate", (Func<string, int, string>)((text, len) =>
+                string.IsNullOrEmpty(text) ? text : text.Length > len ? text.Substring(0, len) + "..." : text));
 
-            return template.Render(model);
+            return script;
+        }
+
+        /// <summary>
+        /// 内部实现的模板加载器，用于支持 Scriban 中的 include 语法
+        /// </summary>
+        private class InternalTemplateLoader : ITemplateLoader
+        {
+            private readonly string _basePath;
+
+            public InternalTemplateLoader(string basePath)
+            {
+                _basePath = basePath;
+            }
+
+            /// <summary>
+            /// 获取 include 模板的物理路径
+            /// </summary>
+            public string GetPath(TemplateContext context, SourceSpan callerSpan, string templateName)
+            {
+                // 1. 标准化路径（去除非前缀斜杠）
+                string normalized = templateName.TrimStart('/', '\\');
+
+                // 2. 应用平台分隔符
+                string platformPath = normalized.Replace("/", Path.DirectorySeparatorChar.ToString())
+                                              .Replace("\\", Path.DirectorySeparatorChar.ToString());
+
+                // 3. 安全组合路径（保证相对路径）
+                string fullPath = Path.Combine(_basePath, platformPath);
+                return fullPath;
+            }
+
+            /// <summary>
+            /// 同步加载模板内容
+            /// </summary>
+            public string Load(TemplateContext context, SourceSpan callerSpan, string templatePath)
+            {
+                return File.ReadAllText(templatePath, Encoding.UTF8);
+            }
+
+            /// <summary>
+            /// 异步加载模板内容
+            /// </summary>
+            public async ValueTask<string> LoadAsync(TemplateContext context, SourceSpan callerSpan, string templatePath)
+            {
+                return await File.ReadAllTextAsync(templatePath, Encoding.UTF8);
+            }
         }
     }
 }
-

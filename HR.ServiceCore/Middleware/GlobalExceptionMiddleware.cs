@@ -138,8 +138,7 @@ namespace HR.ServiceCore.Middleware
             ei.Properties["user"] = sysOperLog.OperName;
 
             Logger.Log(ei);
-            context.Response.ContentType = "text/json;charset=utf-8";
-            await context.Response.WriteAsync(responseResult, System.Text.Encoding.UTF8);
+
             // 7. 准备通知消息
             string errorMsg = $"> 操作人：{sysOperLog.OperName}" +
                 $"\n> 操作地区：{sysOperLog.OperIp}({sysOperLog.OperLocation})" +
@@ -153,17 +152,17 @@ namespace HR.ServiceCore.Middleware
             {
                 WxNoticeHelper.SendMsg("系统异常", errorMsg, msgType: WxNoticeHelper.MsgType.markdown);
             }
-            // 10. 处理不同类型请求的响应
-            bool isFrontEnd = !context.Request.Path.StartsWithSegments("/dev-api");
-
             // 前台异常处理（以/dev-api开头）
             if (!context.Request.Path.StartsWithSegments("/dev-api"))
-            { // 前台请求：记录日志后重定向到错误页
-                context.Response.StatusCode = StatusCodes.Status200OK;
-
+            {
                 // 重定向到500错误页面
-                context.Response.Redirect($"/error/500");
+                context.Response.Redirect("/500");
                 return;
+            }
+            else
+            {
+                context.Response.ContentType = "text/json;charset=utf-8";
+                await context.Response.WriteAsync(responseResult, System.Text.Encoding.UTF8);
             }
         }
 

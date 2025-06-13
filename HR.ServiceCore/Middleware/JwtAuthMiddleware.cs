@@ -108,10 +108,10 @@ namespace HR.ServiceCore.Middleware
                     {
                         Console.WriteLine($"有效页面但未认证，重定向登录");
                         context.Response.StatusCode = 404;
-                        context.Response.Redirect($"/error/404");
+                        context.Response.Redirect($"/404");
                         return;
                     }
-                    if (allowAnonymous) // 路径无效 → 直接返回404
+                    if (allowAnonymous) // 无需验证页面
                     {
                         await _next(context);
                     }

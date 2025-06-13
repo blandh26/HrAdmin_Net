@@ -12,6 +12,7 @@ using HR.Common.DynamicApiSimple.Extens;
 using HR.Infrastructure.WebExtensions;
 using HR.ServiceCore.Signalr;
 using HR.ServiceCore.SqlSugar;
+using HR.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 // NLog: Setup NLog for Dependency injection

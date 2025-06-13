@@ -11,14 +11,22 @@
 		<NoWarn>1701;1702;1591,8603,8602,8604,8600,8618</NoWarn>
 	</PropertyGroup>
 	<ItemGroup>
+	  <None Remove="login.html" />
 	  <None Remove="Template\login - 复制.html" />
 	</ItemGroup>
 	<ItemGroup>
+	  <Content Include="login.html">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
 	  <Content Include="Template\login.html">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Content>
-	  <Content Include="Template\register.html" />
-	  <Content Include="Template\resetpsd.html" />
+	  <Content Include="Template\register.html">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Template\resetpsd.html">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Lazy.Captcha.Core" Version="2.0.9" />
@@ -43,6 +51,24 @@
 	<ItemGroup>
 		<None Update="ip2region.xdb">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Template\404.html">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Template\500.html">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Template\components\footer.html">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Template\components\head.html">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Template\components\header.html">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="Template\index.html">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 		<Content Update="wwwroot\Generatecode\**\*">
 			<CopyToPublishDirectory>Never</CopyToPublishDirectory>
