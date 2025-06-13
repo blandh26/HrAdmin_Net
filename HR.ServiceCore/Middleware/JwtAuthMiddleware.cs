@@ -6,6 +6,8 @@ using Microsoft.Extensions.Logging;
 using System.Security.Claims;
 using HR.Common;
 using System.Net;
+using Microsoft.AspNetCore.Mvc.Controllers;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace HR.ServiceCore.Middleware
 {
@@ -102,12 +104,23 @@ namespace HR.ServiceCore.Middleware
                 // 2. 前台页面请求
                 else
                 {
-                    // 首先设置401状态码（基础状态）
-                    context.Response.StatusCode = StatusCodes.Status401Unauthorized;
-
-                    // 获取完整URL（用于登录后重定向）
-                    string returnUrl = GetFullUrl(context);
-                    context.Response.Redirect($"/login?returnUrl={returnUrl}");
+                    if (endpoint == null || !IsValidEndpoint(endpoint)) // 路径无效 → 直接返回404
+                    {
+                        Console.WriteLine($"有效页面但未认证，重定向登录");
+                        context.Response.StatusCode = 404;
+                        context.Response.Redirect($"/error/404");
+                        return;
+                    }
+                    if (allowAnonymous) // 路径无效 → 直接返回404
+                    {
+                        await _next(context);
+                    }
+                    else // 路径有效但需要认证 → 重定向登录
+                    {
+                        Console.WriteLine($"有效页面但未认证，重定向登录");
+                        context.Response.Redirect($"/login?returnUrl={GetFullUrl(context)}");
+                        return;
+                    }
                 }
             }            
         }
@@ -119,8 +132,7 @@ namespace HR.ServiceCore.Middleware
                 return false;
 
             // 2. 检查是否是框架特殊端点
-            if (endpoint.DisplayName?.Contains("Fallback") == true ||
-                endpoint.DisplayName?.Contains("Dummy") == true)
+            if (endpoint.DisplayName?.Contains("Fallback") == true || endpoint.DisplayName?.Contains("Dummy") == true)
             {
                 return false;
             }

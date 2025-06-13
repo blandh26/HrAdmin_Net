@@ -56,12 +56,13 @@ namespace HR.ServiceCore.Middleware
 
         private async Task HandleExceptionAsync(HttpContext context, Exception ex)
         {
+            // 1. 初始化变量
             LogLevel logLevel = LogLevel.Info;
             int code = (int)ResultCode.GLOBAL_ERROR;
             string msg;
             string error = string.Empty;
             bool notice = true;
-            //自定义异常
+            // 2. 自定义异常处理
             if (ex is CustomException customException)
             {
                 code = customException.Code;
@@ -74,7 +75,7 @@ namespace HR.ServiceCore.Middleware
                 code = (int)ResultCode.PARAM_ERROR;
                 msg = ex.Message;
             }
-            else
+            else // 其他异常
             {
                 var q1 = "Exception has been thrown by the target of an invocation";
                 var an1 = string.Empty;
@@ -87,7 +88,7 @@ namespace HR.ServiceCore.Middleware
                 logLevel = LogLevel.Error;
                 context.Response.StatusCode = 500;
             }
-
+            // 3. 创建API响应对象（即使前台请求也需要创建用于日志记录）
             ApiResult apiResult = new(code, msg);
 #if DEBUG
             if (logLevel == LogLevel.Error)
@@ -98,7 +99,7 @@ namespace HR.ServiceCore.Middleware
             string responseResult = textJson.JsonSerializer.Serialize(apiResult, options);
             string ip = HttpContextExtension.GetClientUserIp(context);
             var ip_info = IpTool.Search(ip);
-
+            // 4. 创建操作日志
             SysOperLog sysOperLog = new()
             {
                 Status = 1,
@@ -112,6 +113,7 @@ namespace HR.ServiceCore.Middleware
                 OperTime = DateTime.Now,
                 OperParam = HttpContextExtension.GetRequestValue(context, context.Request.Method)
             };
+            // 5. 获取端点信息
             var endpoint = GetEndpoint(context);
             if (endpoint != null)
             {
@@ -124,6 +126,7 @@ namespace HR.ServiceCore.Middleware
                     sysOperLog.JsonResult = logAttribute.IsSaveResponseData ? sysOperLog.JsonResult : "";
                 }
             }
+            // 6. 记录日志事件
             LogEventInfo ei = new(logLevel, "GlobalExceptionMiddleware", error)
             {
                 Exception = ex,
@@ -137,16 +140,31 @@ namespace HR.ServiceCore.Middleware
             Logger.Log(ei);
             context.Response.ContentType = "text/json;charset=utf-8";
             await context.Response.WriteAsync(responseResult, System.Text.Encoding.UTF8);
-
+            // 7. 准备通知消息
             string errorMsg = $"> 操作人：{sysOperLog.OperName}" +
                 $"\n> 操作地区：{sysOperLog.OperIp}({sysOperLog.OperLocation})" +
                 $"\n> 操作模块：{sysOperLog.Title}" +
                 $"\n> 操作地址：{sysOperLog.OperUrl}" +
                 $"\n> 错误信息：{msg}\n\n> {error}";
-
+            // 8. 插入操作日志
             SysOperLogService.InsertOperlog(sysOperLog);
-            if (!notice) return;
-            WxNoticeHelper.SendMsg("系统异常", errorMsg, msgType: WxNoticeHelper.MsgType.markdown);
+            // 9. 发送通知
+            if (notice)
+            {
+                WxNoticeHelper.SendMsg("系统异常", errorMsg, msgType: WxNoticeHelper.MsgType.markdown);
+            }
+            // 10. 处理不同类型请求的响应
+            bool isFrontEnd = !context.Request.Path.StartsWithSegments("/dev-api");
+
+            // 前台异常处理（以/dev-api开头）
+            if (!context.Request.Path.StartsWithSegments("/dev-api"))
+            { // 前台请求：记录日志后重定向到错误页
+                context.Response.StatusCode = StatusCodes.Status200OK;
+
+                // 重定向到500错误页面
+                context.Response.Redirect($"/error/500");
+                return;
+            }
         }
 
         public static Endpoint GetEndpoint(HttpContext context)
