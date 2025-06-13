@@ -827,12 +827,16 @@ mark, .mark {
 
 .container {
     position: relative;
-    max-width: 1320px;
+    max-width: 1430px;
     margin-left: auto;
     margin-right: auto;
     padding-left: 15px;
-    padding-right: 15px
+    padding-right: 15px;
+    margin-top: 10px;
 }
+    .container > :nth-child(2) {
+        margin-bottom: 10px;
+    }
 
     .container::after {
         content: "";
@@ -1951,11 +1955,11 @@ body {
 
 .logo {
     float: left;
-    margin: 25px 0 0 0;
-    height: 18px;
-    font-size: 18px;
+    margin: 15px 0 0 0;
+    height: 48px;
+    font-size: 40px;
     overflow: hidden;
-    width: 150px
+    width: 102px;
 }
 
     .logo a {
@@ -3027,7 +3031,7 @@ body {
     position: relative;
     z-index: 9;
     clear: both;
-    padding: 60px 0;
+    padding: 20px 0;
     font-size: 13px;
     background-color: #202935;
     color: #ccc;
@@ -4886,7 +4890,7 @@ div.code-toolbar {
     }
 
         .mo-title .more a {
-            margin-left: 20px;
+            margin-left: 10px;
             color: #bbb
         }
 
@@ -5277,16 +5281,19 @@ div.code-toolbar {
     }
 }
 
+
 .mo-questions {
     float: left;
-    width: 36.71875%;
-    margin-top: 15px;
-    margin-left: 1.25%;
+    width: 32.66%;
+    margin-right: 1%;
     padding: 25px 20px;
     overflow: hidden;
     background-color: #fff;
     border-radius: 8px
 }
+    .mo-questions:last-child {
+        margin-right: 0;
+    }
 
     .mo-questions ul {
         overflow: hidden
@@ -5295,8 +5302,8 @@ div.code-toolbar {
         .mo-questions ul li {
             position: relative;
             padding-left: 16px;
-            margin-top: 9px;
-            margin-bottom: 20px
+            margin-top: 0px;
+            margin-bottom: 10px
         }
 
             .mo-questions ul li:last-child {

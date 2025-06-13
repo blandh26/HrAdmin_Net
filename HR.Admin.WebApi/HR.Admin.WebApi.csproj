@@ -39,6 +39,15 @@
 
 	<ItemGroup>
 		<Folder Include="Properties\PublishProfiles\" />
+		<Folder Include="Template\qa\" />
+		<Folder Include="Template\house\" />
+		<Folder Include="Template\vehicles\" />
+		<Folder Include="Template\jobhunting\" />
+		<Folder Include="Template\dating\" />
+		<Folder Include="Template\secondhand\" />
+		<Folder Include="Template\businessPromotion\" />
+		<Folder Include="Template\member\" />
+		<Folder Include="Template\html\" />
 		<Folder Include="wwwroot\Html\" />
 	</ItemGroup>
 
@@ -97,16 +106,16 @@
 	  <Content Update="wwwroot\static\js\loader.js">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Content>
-	  <Content Update="wwwroot\static\picture\qq.webp">
+	  <Content Update="wwwroot\static\image\qq.webp">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Content>
-	  <Content Update="wwwroot\static\picture\qr-tb.jpg">
+	  <Content Update="wwwroot\static\image\qr-tb.jpg">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Content>
-	  <Content Update="wwwroot\static\picture\tb-kefu.jpg">
+	  <Content Update="wwwroot\static\image\tb-kefu.jpg">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Content>
-	  <Content Update="wwwroot\static\picture\wanganbei.png">
+	  <Content Update="wwwroot\static\image\wanganbei.png">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Content>
 	</ItemGroup>
