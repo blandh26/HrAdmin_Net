@@ -26,49 +26,49 @@ namespace HR.Admin.WebApi.Controllers
         [HttpGet("register")]
         public IActionResult Register()
         {
-            string html = ScribanHelper.RenderTemplate("register.html", GetLang());
+            string html = ScribanHelper.RenderTemplate("register.html", null, GetLang());
             return Content(html, "text/html");
         }
 
         [HttpGet("login")]
         public IActionResult Login()
         {
-            string html = ScribanHelper.RenderTemplate("login.html", GetLang());
+            string html = ScribanHelper.RenderTemplate("login.html", null, GetLang());
             return Content(html, "text/html");
         }
 
         [HttpGet("resetpsd")]
         public IActionResult Resetpsd()
         {
-            string html = ScribanHelper.RenderTemplate("resetpsd.html", GetLang());
+            string html = ScribanHelper.RenderTemplate("resetpsd.html", null, GetLang());
             return Content(html, "text/html");
         }
 
         [HttpGet("member")]
         public IActionResult Member()
         {
-            string html = ScribanHelper.RenderTemplate(Path.Combine("member", "index.html"), GetLang());
+            string html = ScribanHelper.RenderTemplate(Path.Combine("member", "index.html"), null, GetLang());
             return Content(html, "text/html");
         }
 
         [HttpGet("member/password")]
         public IActionResult MemberPassword()
         {
-            string html = ScribanHelper.RenderTemplate(Path.Combine("member", "password.html"), GetLang());
+            string html = ScribanHelper.RenderTemplate(Path.Combine("member", "password.html"), null, GetLang());
             return Content(html, "text/html");
         }
 
         [HttpGet("member/info")]
         public IActionResult MemberInfo()
         {
-            string html = ScribanHelper.RenderTemplate(Path.Combine("member", "info.html"), GetLang());
+            string html = ScribanHelper.RenderTemplate(Path.Combine("member", "info.html"), null, GetLang());
             return Content(html, "text/html");
         }
 
         [HttpGet("member/messages")]
         public IActionResult MemberMessages()
         {
-            string html = ScribanHelper.RenderTemplate(Path.Combine("member", "messages.html"), GetLang());
+            string html = ScribanHelper.RenderTemplate(Path.Combine("member", "messages.html"), null, GetLang());
             return Content(html, "text/html");
         }
 
@@ -82,21 +82,21 @@ namespace HR.Admin.WebApi.Controllers
         [HttpGet("member/comments")]
         public IActionResult MemberComments()
         {
-            string html = ScribanHelper.RenderTemplate(Path.Combine("member", "comments.html"), GetLang());
+            string html = ScribanHelper.RenderTemplate(Path.Combine("member", "comments.html"), null, GetLang());
             return Content(html, "text/html");
         }
 
         [HttpGet("member/articles")]
         public IActionResult MemberArticles()
         {
-            string html = ScribanHelper.RenderTemplate(Path.Combine("member", "articlesList.html"), GetLang());
+            string html = ScribanHelper.RenderTemplate(Path.Combine("member", "articlesList.html"), null, GetLang());
             return Content(html, "text/html");
         }
 
         [HttpGet("member/articlesAdd")]
         public IActionResult MemberArticlesAdd()
         {
-            string html = ScribanHelper.RenderTemplate(Path.Combine("member", "articlesAdd.html"), GetLang());
+            string html = ScribanHelper.RenderTemplate(Path.Combine("member", "articlesAdd.html"), null, GetLang());
             return Content(html, "text/html");
         }
         #endregion

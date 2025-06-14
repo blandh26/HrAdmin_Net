@@ -1,61 +1,8 @@
 ﻿<!DOCTYPE HTML>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Cache-Control" content="no-siteapp">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="apple-mobile-web-app-title" content="themebetter">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://themebetter.com/static/img/icon-144x144.png">
-    <link rel="shortcut icon" href="https://themebetter.com/favicon.ico">
-    <link rel="dns-prefetch" href="//at.alicdn.com">
-    <title>会员登录</title>
-    <meta name="keywords" content="会员登录,wordpress主题,wordpress">
-    <meta name="description" content="会员登录">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="会员登录">
-    <meta property="og:description" content="会员登录">
-    <meta property="og:image" content="https://themebetter.com/static/img/tb.jpg">
-    <link rel="stylesheet" href="static/css/app.css" media="all">
-    <meta name="baidu-site-verification" content="codeva-R471jdLnX9">
-    <!--[if lt IE 9]><script src="https://themebetter.com/static/js/libs/html5shiv.min.js"></script><![endif]-->
-    <script>var _hmt = _hmt || []; (function () { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?580b6034b4fdfd3918e00011a9eaa802"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s) })();</script>
-    <script>!function (p) { "use strict"; !function (t) { var s = window, e = document, i = p, c = "".concat("https:" === e.location.protocol ? "https://" : "http://", "sdk.51.la/js-sdk-pro.min.js"), n = e.createElement("script"), r = e.getElementsByTagName("script")[0]; n.type = "text/javascript", n.setAttribute("charset", "UTF-8"), n.async = !0, n.src = c, n.id = "LA_COLLECT", i.d = n; var o = function () { s.LA.ids.push(i) }; s.LA ? s.LA.ids && o() : (s.LA = p, s.LA.ids = [], o()), r.parentNode.insertBefore(n, r) }() }({ id: "KRsYsF5HvLLZ3lKI", ck: "KRsYsF5HvLLZ3lKI", autoTrack: true });</script>
-</head>
-<body class="page-login ishd">
-    <header class="header">
-        <div class="logo"><a href="https://themebetter.com" title="theme + better = themebetter"><i class="fa">&#xe64b;</i>更好的WordPress主题,值得信任的WordPress主题开发商</a></div>	<h2 class="site-brand-txt">更好的WordPress主题</h2>
-
-        <div class="wel-sign">
-            <div class="wel-item"><a rel="nofollow" class="btn btn-primary-outline" href="">登录</a></div>
-            <div class="wel-item"><a rel="nofollow" class="btn btn-primary" href="index.html">免费注册</a></div>
-        </div>
-
-        <div class="site-search">
-            <form method="get" action="https://themebetter.com/s">
-                <i class="fa">&#xe604;</i><input name="word" type="search" required="required" placeholder="搜索..." value="">
-            </form>
-        </div>
-
-        <div class="site-navbar">
-            <ul>
-                <li class=""><a href="https://themebetter.com/">首页</a></li>
-                <li class=""><a href="https://themebetter.com/theme/dux">DUX</a></li>
-                <li class=""><a href="https://themebetter.com/theme/mok">MOK</a></li>
-                <li class="has-sub-menu"><a href="https://themebetter.com/theme">618活动专场<span class="fa fa-hd">&#xe6bf;</span></a><div class="sub-menu"><ul><li class=""><a href="https://themebetter.com/theme/nab">NAB主题</a></li><li class=""><a href="https://themebetter.com/theme/yia">YIA主题</a></li><li class=""><a href="https://themebetter.com/theme/mok">MOK主题</a></li><li class=""><a href="https://themebetter.com/theme/dux">DUX主题</a></li><li class=""><a href="https://themebetter.com/theme/xiu">XIU主题</a></li><li class=""><a href="https://themebetter.com/theme/tob">TOB主题</a></li><li class=""><a href="https://themebetter.com/theme/themebetter-ent">ENT主题</a></li><li class=""><a href="https://themebetter.com/theme/d8">D8主题</a></li></ul></div></li>
-                <li class="has-sub-menu"><a href="https://themebetter.com/plugin/tb-member"><i class="fa">&#xe8de;</i> 插件</a><div class="sub-menu"><ul><li class=""><a href="https://themebetter.com/plugin/tb-member">TB-Member</a></li></ul></div></li>
-                <li class=""><a href="https://themebetter.com/items"><i class="fa">&#xe811;</i> 服务</a></li>
-                <li class=""><a href="https://themebetter.com/news">动态</a></li>
-                <li class=""><a href="https://themebetter.com/noob">新手册</a></li>
-                <li class=""><a href="https://themebetter.com/course">教程</a></li>
-                <li class=""><a href="https://themebetter.com/question"><i class="fa">&#xe673;</i> 问答</a></li>
-            </ul>
-        </div>
-
-        <div class="mnav-back" etap="nav_back" data-back="https://themebetter.com/theme"><i class="fa">&#xe726;</i></div>
-        <div class="mnav-search" etap="nav_search" data-icon="&#xe62d;"><i class="fa">&#xe604;</i></div>
-        <div class="m-mask"></div>
-    </header>
+{{ include '/Template/components/head.html' }}
+<body class="page-home page-hdfocus ishd">
+    {{ include '/Template/components/header.html' }}
 
     <div class="sign-bg" style="background-image:url(static/image/sign-bg.jpg)"></div>
 
@@ -75,126 +22,30 @@
                 </label>
                 <input type="password" name="user_password" class="ipt" id="inputPassword" placeholder="输入登录密码">
             </div>
+            <div class="item" style=" height: 60px;">
+                <label>输入你验证码</label>
+                <input id="user_email" type="text" name="user_email" required autocomplete="off" class="ipt" placeholder="输入你验证码" style="width: 45%; float: left; ">
+                <img class="ipt" style="width: 45%; float: right; height: 40px;" src="data:image/gif;base64,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">
+            </div>
             <div class="sign-submit">
                 <input type="button" class="btn btn-primary btn-block" value="登 录" etap="login_submit">
                 <input type="hidden" name="login" value="1">
                 <input type="hidden" name="user_rememberme" value="1">
                 <input type="hidden" name="back" id="back" value="https://themebetter.com/member">
             </div>
-            <div class="sign-third">
+            <!--<div class="sign-third">
                 <h5>其他登录方式</h5>
                 <a rel="nofollow" class="sign-third-qq" href="/login/qq"><i class="fa">&#xe628;</i>QQ登录</a>
                 <a rel="nofollow" class="sign-third-wechat" href="/login/wechat" etap="wechat_login"><i class="fa">&#xe62c;</i>微信登录</a>
                 <a rel="nofollow" class="sign-third-weibo" href="/login/weibo"><i class="fa">&#xe627;</i>微博登录</a>
-            </div>
+            </div>-->
         </form>
 
         <footer>
             还没有账号？ <a rel="nofollow" href="index.html">新用户注册</a>
         </footer>
-
-    </section><!-- SERVICE -->
-    <section class="mo-service">
-        <div class="container">
-            <div class="lead-title">
-                <h3>建站！你有充足的理由选择我们</h3>
-                <div class="desc">世界上超过43%的网站是由WordPress搭建，而我们是国内最靠谱的WordPress主题开发商</div>
-            </div>
-            <ul>
-                <li>
-                    <i class="fa">&#xe634;</i>
-                    <strong>高端专业开发团队</strong>
-                    <p>10年WordPress主题博客和企业建站开发经验，提供最专业主题设计与开发</p>
-                </li>
-                <li>
-                    <i class="fa">&#xe725;</i>
-                    <strong>独一无二视觉冲击</strong>
-                    <p>增强用户体验、提高品牌形象给人留下深刻的印象，每款主题都有自己的灵魂</p>
-                </li>
-                <li>
-                    <i class="fa">&#xe63d;</i>
-                    <strong>完善兼容各种设备</strong>
-                    <p>每款主题都提供完善的响应式布局，优化PC、Pad和各种手机端用户体验</p>
-                </li>
-                <li>
-                    <i class="fa">&#xe697;</i>
-                    <strong>免费靠谱售后服务</strong>
-                    <p>免费在线工单或QQ售后，解决主题使用的各种疑惑，你只需用心做站</p>
-                </li>
-            </ul>
-        </div>
     </section>
-
     <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-navs">
-                <ul>
-                    <li><strong>关于</strong></li>
-                    <li><a rel="nofollow" href="https://themebetter.com/about">关于我们</a></li>
-                    <li><a rel="nofollow" href="https://themebetter.com/ads">广告合作</a></li>
-                    <li><a rel="nofollow" href="https://themebetter.com/disclaimer">免责声明</a></li>
-                </ul>
-                <ul>
-                    <li><strong>推荐</strong></li>
-                    <li><a rel="nofollow" href="https://themebetter.com/wordpress/">WordPress最新下载</a></li>
-                    <li><a rel="nofollow" href="https://themebetter.com/wp">WordPress函数与方法</a></li>
-                    <li><a rel="nofollow" href="https://themebetter.com/it">IT教程</a></li>
-                    <li><a rel="nofollow" href="https://www.aliyun.com/minisite/goods?userCode=sd8taisa" target="_blank">云服务器</a></li>
-                    <li><a href="https://lanbojiagu.com" target="_blank">建筑加固</a></li>
-                </ul>
-                <ul>
-                    <li><strong>增值服务</strong></li>
-                    <li><a rel="nofollow" href="https://themebetter.com/item/custom">定制主题</a></li>
-                    <li><a rel="nofollow" href="https://themebetter.com/item/function">功能开发与修改</a></li>
-                    <li><a rel="nofollow" href="https://themebetter.com/item/server">服务器环境安装</a></li>
-                    <li><a rel="nofollow" href="https://themebetter.com/item/logo">LOGO设计</a></li>
-                    <li><a rel="nofollow" href="https://themebetter.com/item/banner">Banner制作</a></li>
-                </ul>
-                <ul>
-                    <li><strong>新手教学</strong></li>
-                    <li><a rel="nofollow" href="https://themebetter.com/ftp-filezilla.html">FTP教学</a></li>
-                    <li><a rel="nofollow" href="https://themebetter.com/wordpress-install.html">WordPress安装</a></li>
-                    <li><a rel="nofollow" href="https://themebetter.com/wordpress-theme-install.html">主题安装方法</a></li>
-                    <li><a rel="nofollow" href="https://themebetter.com/wordpress-menu.html">菜单详解</a></li>
-                    <li><a rel="nofollow" href="https://themebetter.com/course">WordPress教程<i class="fa">&#xe643;</i></a></li>
-                </ul>
-                <ul>
-                    <li><strong>关注微信公众号</strong></li>
-                    <li><img src="static/image/qr-tb.jpg" alt="公众号：themebetter"></li>
-                </ul>
-            </div>
-            <div class="footer-copyright">
-                <div class="footer-logo"><i class="fa">&#xe600;</i></div>
-                &copy; 2010-2025 <a rel="nofollow" href="https://themebetter.com">themebetter</a>，更好的 <a rel="nofollow" href="https://themebetter.com">WordPress主题</a>
-                <br><br><a rel="nofollow" target="_blank" href="http://beian.miit.gov.cn">豫ICP备 15010202号-2</a>
-                <br><a rel="nofollow" target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=41159202000202"><img alt="公网安备" src="static/image/wanganbei.png">豫公网安备 41159202000202号</a>
-            </div>
-
-        </div>
-    </footer>
-
-    <div class="site-contact">
-        <div class="item popup-start"><i class="fa">&#xe62c;</i>微信客服<span class="popup"><span class="-inner">微信扫一扫<img src="static/image/tb-kefu.jpg" alt="themebetter微信客服"><span class="-copy" etap="copy" data-copy="tb-kefu" data-tip="微信号已复制">点击复制微信号</span></span></span></div>
-        <div class="item popup-start"><i class="fa">&#xe628;</i>QQ客服<span class="popup"><span class="-inner">QQ扫一扫<img src="static/image/qq.webp" alt="themebetter微信客服"><span class="-copy" etap="copy" data-copy="937373201" data-tip="QQ号已复制">点击复制QQ号</span></span></span></div>
-        <a class="item popup-start" rel="nofollow" target="_blank" href="https://themebetter.com/login?back=https://themebetter.com/member/workorder"><i class="fa">&#xe60a;</i>在线工单</a>
-        <a class="item popup-start" rel="nofollow" class="site-contact-hd" href="https://themebetter.com/theme"><i class="fa">&#xe65a;</i>活动</a>
-    </div>
-
-    <nav class="m-menubar">
-        <ul>
-            <li class=""><a href="https://themebetter.com/"><i class="fa">&#xe681;</i>首页</a></li>
-            <li class=""><a href="https://themebetter.com/theme"><i class="fa">&#xe65a;</i>618</a></li>
-            <li class=""><a href="https://themebetter.com/plugin/tb-member"><i class="fa">&#xe848;</i>插件</a></li>
-            <li class=""><a href="https://themebetter.com/items"><i class="fa">&#xe811;</i>服务</a></li>
-            <li class=""><a href="https://themebetter.com/member"><i class="fa">&#xe641;</i>我的</a></li>
-        </ul>
-    </nav>
-
-
-    <script>
-        window.TBUI = { "URL": "https:\/\/themebetter.com", "STATIC": "https:\/\/themebetter.com\/static", "VERSION": "8.6.2", "HD_END": "06\/18\/2025 23:59:59" };</script>
-    <script src="static/js/loader.js"></script>
-    <div class="totop" etap="totop" style="display: block;"><i class="fa"></i></div>
+    {{ include '/Template/components/footer.html' }}
 </body>
 </html>
