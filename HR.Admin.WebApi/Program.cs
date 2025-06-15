@@ -162,7 +162,28 @@ app.UseIpRateLimiting();
 app.UseRateLimiter();
 //设置socket连接
 app.MapHub<MessageHub>("/msgHub");
+try
+{
+    string rootPath = AppDomain.CurrentDomain.BaseDirectory;                            // 获取当前应用程序根目录
+    string sourceFolder = Path.Combine(rootPath, "Template", "static");                 // 源文件夹路径
+    string targetFolder = Path.Combine(rootPath, "wwwroot", "static");                  // 目标文件夹路径
+    string targetFolder1 = Path.Combine(rootPath, "wwwroot", "html","cn", "static");    // 目标文件夹路径
+    string targetFolder2 = Path.Combine(rootPath, "wwwroot", "html", "kr", "static");   // 目标文件夹路径
 
+    // 调用压缩方法
+    string result = WebResourceCompressor.CompressFolder(sourceFolder, targetFolder);
+    string result1 = WebResourceCompressor.CompressFolder(sourceFolder, targetFolder1);
+    string result2 = WebResourceCompressor.CompressFolder(sourceFolder, targetFolder2);
 
+    // 记录压缩结果
+    Console.WriteLine($"压缩完成静态文件: {result}");
+    Console.WriteLine($"压缩完成静态文件1: {result1}");
+    Console.WriteLine($"压缩完成静态文件1: {result2}");
+}
+catch (Exception ex)
+{
+    // 记录错误信息
+    Console.WriteLine($"压缩过程中发生错误: {ex.Message}");
+}
 app.MapControllers();
 app.Run();
