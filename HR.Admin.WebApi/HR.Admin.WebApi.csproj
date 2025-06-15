@@ -12,10 +12,28 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <None Remove="login.html" />
+	  <None Remove="Template\404.html" />
+	  <None Remove="Template\500.html" />
+	  <None Remove="Template\index.html" />
 	  <None Remove="Template\login - 复制.html" />
+	  <None Remove="Template\static\css\app.css" />
+	  <None Remove="Template\static\font\font_29668_bri3o57i6uw.ttf" />
+	  <None Remove="Template\static\font\font_29668_bri3o57i6uw.woff" />
+	  <None Remove="Template\static\font\font_29668_bri3o57i6uw.woff2" />
+	  <None Remove="Template\static\image\sign-bg.jpg" />
+	  <None Remove="Template\static\js\loader.js" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Content Include="login.html">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Template\404.html">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Template\500.html">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Template\index.html">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Content>
 	  <Content Include="Template\login.html">
@@ -26,6 +44,36 @@
 	  </Content>
 	  <Content Include="Template\resetpsd.html">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Template\static\css\app.css">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="Template\static\font\font_29668_bri3o57i6uw.ttf">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Template\static\font\font_29668_bri3o57i6uw.woff">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="Template\static\font\font_29668_bri3o57i6uw.woff2">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="Template\static\image\sign-bg.jpg">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Include="Template\static\js\loader.js">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
 	  </Content>
 	</ItemGroup>
 	<ItemGroup>
@@ -47,7 +95,6 @@
 		<Folder Include="Template\secondhand\" />
 		<Folder Include="Template\businessPromotion\" />
 		<Folder Include="Template\member\" />
-		<Folder Include="Template\html\" />
 		<Folder Include="wwwroot\Html\" />
 	</ItemGroup>
 
@@ -61,12 +108,6 @@
 		<None Update="ip2region.xdb">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
-		<None Update="Template\404.html">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="Template\500.html">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
 		<None Update="Template\components\footer.html">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
@@ -74,9 +115,6 @@
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 		<None Update="Template\components\header.html">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-		<None Update="Template\index.html">
 		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 		<Content Update="wwwroot\Generatecode\**\*">
@@ -92,6 +130,9 @@
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Content>
 	  <Content Update="wwwroot\static\font\font_29668.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Content Update="wwwroot\static\font\font_29668_bri3o57i6uw.ttf">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Content>
 	  <Content Update="wwwroot\static\font\font_29668_bri3o57i6uw.woff">

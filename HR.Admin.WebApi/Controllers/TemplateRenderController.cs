@@ -26,14 +26,14 @@ namespace HR.Admin.WebApi.Controllers
         [HttpGet("register")]
         public IActionResult Register()
         {
-            string html = ScribanHelper.RenderTemplate("register.html", null, GetLang());
+            string html = ScribanHelper.RenderTemplate("register.html", null, GetLang(),ScribanHelper.CacheType.Memory);
             return Content(html, "text/html");
         }
 
         [HttpGet("login")]
         public IActionResult Login()
         {
-            string html = ScribanHelper.RenderTemplate("login.html", null, GetLang());
+            string html = ScribanHelper.RenderTemplate("login.html", null, GetLang(), ScribanHelper.CacheType.Html);
             return Content(html, "text/html");
         }
 
